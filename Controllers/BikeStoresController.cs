@@ -54,7 +54,7 @@ namespace BikeDealersProject.Controllers
             return Ok(bike);
         }
 
-        [Authorize(Roles = "Admin,Producer")]
+        //[Authorize(Roles = "Admin,Producer")]
         [HttpPost]
         public async Task<ActionResult<BikeStore>> PostBike(BikeStore bike)
         {
@@ -90,7 +90,7 @@ namespace BikeDealersProject.Controllers
             return Ok("Bike updated successfully");
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBike(int id)
         {
@@ -99,7 +99,7 @@ namespace BikeDealersProject.Controllers
             {
                 return NotFound();
             }
-            return Ok("Bike deleted successfully.");
+            return Ok(new { message = "Bike deleted successfully." });
         }
     }
 }
