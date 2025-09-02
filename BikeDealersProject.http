@@ -1,0 +1,6 @@
+@BikeDealersProject_HostAddress = http://localhost:5193
+
+GET {{BikeDealersProject_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
