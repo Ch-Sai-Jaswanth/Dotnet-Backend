@@ -51,15 +51,16 @@ namespace BikeDealersProject.Services
             return lst;
         }
 
-        public async Task<int> UpdateBike(int id, BikeStore bike)
+        public async Task<BikeStore> UpdateBike(int id, BikeStore bike)
         {
             BikeStore bk = await _context.BikeStores.FindAsync(id);
-            if (bk == null) return 0;
+            if (bk == null) return null;
             bk.ModelName = bike.ModelName;
             bk.ModelYear = bike.ModelYear;
             bk.EngineCc = bike.EngineCc;
             bk.Manufacturer = bike.Manufacturer;
-            return await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
+            return bk;
         }
     }
 }

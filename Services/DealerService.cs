@@ -49,10 +49,10 @@ namespace BikeDealersProject.Services
             return lst;
         }
 
-        public async Task<int> UpdateDealer(int id, Dealer dealer)
+        public async Task<Dealer> UpdateDealer(int id, Dealer dealer)
         {
             Dealer dl = await _context.Dealers.FindAsync(id);
-            if (dl == null) return 0;
+            if (dl == null) return null;
             dl.DealerName = dealer.DealerName;
             dl.Address = dealer.Address;
             dl.City = dealer.City;
@@ -60,7 +60,8 @@ namespace BikeDealersProject.Services
             dl.ZipCode = dealer.ZipCode;
             dl.StorageCapacity = dealer.StorageCapacity;
             dl.Inventory = dealer.Inventory;
-            return await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
+            return dl;
         }
     }
 }

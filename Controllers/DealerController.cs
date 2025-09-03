@@ -73,16 +73,16 @@ namespace BikeDealersProject.Controllers
             return BadRequest("Failed to add dealers.");
         }
 
-        [Authorize(Roles = "Admin,Dealer")]
+        //[Authorize(Roles = "Admin,Dealer")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDealer(int id, Dealer dealer)
         {
             var result = await _dealerService.UpdateDealer(id, dealer);
-            if (result == 0)
+            if (result == null)
             {
                 return NotFound();
             }
-            return Ok("Dealer updated successfully.");
+            return Ok(result);
         }
 
         //[Authorize(Roles = "Admin")]

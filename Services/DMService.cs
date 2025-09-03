@@ -47,15 +47,16 @@ namespace BikeDealersProject.Services
             return lst;
         }
 
-        public async Task<int> UpdateDM(int id, DealerMaster dm)
+        public async Task<DealerMaster> UpdateDM(int id, DealerMaster dm)
         {
             DealerMaster dd = await _context.DealerMasters.FindAsync(id);
-            if (dd == null) return 0;
+            if (dd == null) return null;
             dd.DealerId = dm.DealerId;
             dd.BikeId = dm.BikeId;
             dd.BikesDelivered = dm.BikesDelivered;
             dd.DeliveryDate = dm.DeliveryDate;
-            return await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
+            return dd;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace BikeDealersProject.Services
     {
         Task<int> AddBike(BikeStore bike);
         Task<int> AddBikesBulk(List<BikeStore> bikes);
-        Task<int> UpdateBike(int id, BikeStore bike);
+        Task<BikeStore> UpdateBike(int id, BikeStore bike);
         Task<int> DeleteBike(int id);
         Task<List<BikeStore>> GetBikes();
         Task<BikeStore> FindBikeById(int id);
@@ -25,7 +25,7 @@ namespace BikeDealersProject.Services
         Task<List<Dealer>> GetDealers();
         Task<Dealer> FindDealerById(int id);
         Task<Dealer> FindDealerByName(string name);
-        Task<int> UpdateDealer(int id, Dealer dealer);
+        Task<Dealer> UpdateDealer(int id, Dealer dealer);
         Task<int> DeleteDealer(int id);
     }
     public interface IDealerMasterService
@@ -34,7 +34,7 @@ namespace BikeDealersProject.Services
         Task<int> AddDealerMastersBulk(List<DealerMaster> dealerMasters);
         Task<List<DealerMaster>> GetDMs();
         Task<DealerMaster> FindDMById(int id);
-        Task<int> UpdateDM(int id, DealerMaster dm);
+        Task<DealerMaster> UpdateDM(int id, DealerMaster dm);
         Task<int> DeleteDM(int id);
     }
 }

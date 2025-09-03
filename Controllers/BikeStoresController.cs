@@ -54,7 +54,7 @@ namespace BikeDealersProject.Controllers
             return Ok(bike);
         }
 
-        //[Authorize(Roles = "Admin,Producer")]
+        [Authorize(Roles = "Admin,Producer")]
         [HttpPost]
         public async Task<ActionResult<BikeStore>> PostBike(BikeStore bike)
         {
@@ -78,16 +78,16 @@ namespace BikeDealersProject.Controllers
             return BadRequest("Failed to add bikes.");
         }
 
-        [Authorize(Roles = "Admin,Producer")]
+        //[Authorize(Roles = "Admin,Producer")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBike(int id, BikeStore bike)
         {
             var result = await _bikeService.UpdateBike(id, bike);
-            if (result == 0)
+            if (result == null)
             {
                 return NotFound();
             }
-            return Ok("Bike updated successfully");
+            return Ok(result);
         }
 
         //[Authorize(Roles = "Admin")]
