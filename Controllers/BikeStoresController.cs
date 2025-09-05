@@ -78,7 +78,7 @@ namespace BikeDealersProject.Controllers
             return BadRequest("Failed to add bikes.");
         }
 
-        //[Authorize(Roles = "Admin,Producer")]
+        [Authorize(Roles = "Admin,Producer")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBike(int id, BikeStore bike)
         {
@@ -90,7 +90,7 @@ namespace BikeDealersProject.Controllers
             return Ok(result);
         }
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBike(int id)
         {

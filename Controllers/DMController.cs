@@ -37,7 +37,7 @@ namespace BikeDealersProject.Controllers
             return Ok(dm);
         }
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<DealerMaster>> AddDealerMaster(DealerMaster dm)
         {
@@ -61,7 +61,7 @@ namespace BikeDealersProject.Controllers
             return BadRequest("Failed to add DealerMasters.");
         }
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDealerMaster(int id, DealerMaster dm)
         {
@@ -73,7 +73,7 @@ namespace BikeDealersProject.Controllers
             return Ok(result);
         }
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDealerMaster(int id)
         {
