@@ -22,7 +22,10 @@ namespace BikeDealersProject.Services
             _context.Dealers.AddRangeAsync(dealers);
             return await _context.SaveChangesAsync();
         }
-
+        public async Task<bool> Exists(int id)
+        {
+            return await _context.Dealers.AnyAsync(d => d.DealerId == id);
+        }
         public async Task<int> DeleteDealer(int id)
         {
             Dealer dl = await _context.Dealers.FindAsync(id);

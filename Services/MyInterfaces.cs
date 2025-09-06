@@ -17,6 +17,7 @@ namespace BikeDealersProject.Services
         Task<List<BikeStore>> GetBikes();
         Task<BikeStore> FindBikeById(int id);
         Task<BikeStore> FindBikeByName(string name);
+        Task<bool> Exists(int id);
     }
     public interface IDealerService
     {
@@ -27,6 +28,7 @@ namespace BikeDealersProject.Services
         Task<Dealer> FindDealerByName(string name);
         Task<Dealer> UpdateDealer(int id, Dealer dealer);
         Task<int> DeleteDealer(int id);
+        Task<bool> Exists(int id);
     }
     public interface IDealerMasterService
     {
@@ -36,5 +38,6 @@ namespace BikeDealersProject.Services
         Task<DealerMaster> FindDMById(int id);
         Task<DealerMaster> UpdateDM(int id, DealerMaster dm);
         Task<int> DeleteDM(int id);
+        Task<bool> Exists(int id);
     }
 }

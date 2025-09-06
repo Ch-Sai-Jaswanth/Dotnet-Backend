@@ -49,6 +49,14 @@ namespace BikeDealersProject.Controllers
             return Ok(dealer);
         }
 
+        [AllowAnonymous]
+        [HttpGet("exists/{id}")]
+        public async Task<IActionResult> CheckDealerExists(int id)
+        {
+            var result = await _dealerService.Exists(id);
+            return Ok(result);
+        }
+
         [Authorize(Roles = "Admin,Dealer")]
         [HttpPost]
         public async Task<ActionResult<Dealer>> PostDealer(Dealer dealer)

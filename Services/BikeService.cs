@@ -13,6 +13,10 @@ namespace BikeDealersProject.Services
         {
             _context = context;
         }
+        public async Task<bool> Exists(int id)
+        {
+            return await _context.BikeStores.AnyAsync(b => b.BikeId == id);
+        }
         public async Task<int> AddBike(BikeStore bike)
         {
             _context.Add(bike);

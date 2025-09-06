@@ -53,6 +53,13 @@ namespace BikeDealersProject.Controllers
             }
             return Ok(bike);
         }
+        [AllowAnonymous]
+        [HttpGet("exists/{id}")]
+        public async Task<IActionResult> CheckBikeExists(int id)
+        {
+            var result = await _bikeService.Exists(id);
+            return Ok(result);
+        }
 
         [Authorize(Roles = "Admin,Producer")]
         [HttpPost]

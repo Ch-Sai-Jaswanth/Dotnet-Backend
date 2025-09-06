@@ -1,4 +1,5 @@
 ﻿using BikeDealersProject.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BikeDealersProject.Services
@@ -39,6 +40,11 @@ namespace BikeDealersProject.Services
         {
             DealerMaster dm = await _context.DealerMasters.FirstOrDefaultAsync(d => d.DealerMasterId == id);
             return dm;
+        }
+
+        public async Task<bool> Exists(int id)
+        {
+            return await _context.DealerMasters.AnyAsync(d => d.DealerMasterId == id);
         }
 
         public async Task<List<DealerMaster>> GetDMs()

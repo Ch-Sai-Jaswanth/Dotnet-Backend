@@ -37,6 +37,14 @@ namespace BikeDealersProject.Controllers
             return Ok(dm);
         }
 
+        [AllowAnonymous]
+        [HttpGet("exists/{id}")]
+        public async Task<IActionResult> CheckDMExists(int id)
+        {
+            var exists = await _dmService.Exists(id);
+            return Ok(exists);
+        }
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<DealerMaster>> AddDealerMaster(DealerMaster dm)
