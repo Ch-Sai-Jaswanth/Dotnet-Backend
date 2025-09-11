@@ -52,7 +52,7 @@ namespace BikeDealersProject.Controllers
             var result = await _dmService.AddDealerMaster(dm);
             if (result > 0)
             {
-                return CreatedAtAction(nameof(GetDealerMaster), new { id = dm.DealerMasterId }, dm);
+                return CreatedAtAction(nameof(GetDealerMaster), new { id = dm.DealerMasterId }, new { message = "DealerMaster created successfully", id = dm.DealerMasterId });
             }
             return BadRequest("Failed to add DealerMaster entry.");
         }

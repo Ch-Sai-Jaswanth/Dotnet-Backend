@@ -39,5 +39,7 @@ namespace BikeDealersProject.Services
         Task<DealerMaster> UpdateDM(int id, DealerMaster dm);
         Task<int> DeleteDM(int id);
         Task<bool> Exists(int id);
+        Task<int> UpdateDealerInventoryOnAdd(DealerMaster dm);
+        Task<int> UpdateDealerInventoryOnDelete(int dealerMasterId);
     }
 }

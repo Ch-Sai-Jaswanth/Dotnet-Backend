@@ -8,6 +8,7 @@ using BikeDealersProject.AuthModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace BikeDealersProject
 {
@@ -27,6 +28,13 @@ namespace BikeDealersProject
 
             builder.Services.AddDbContext<AuthDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("AuthDb")));
+
+            // Add services to the container.
+            builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                });
 
             builder.Services.AddIdentity<IdentityUser, IdentityRole>()
             .AddEntityFrameworkStores<AuthDbContext>()
